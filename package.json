@@ -1,0 +1,48 @@
+{
+  "name": "hypie",
+  "version": "0.0.1",
+  "description": "Hypie is a template that supports the creation of Discord bots.",
+  "license": "MIT",
+  "main": "./dist/bot.js",
+  "scripts": {
+    "start": "node -r dotenv-safe/config ./dist/bot.js",
+    "start:dev": "ts-node -r dotenv-safe/config ./src/bot.ts",
+    "compile": "tsc -p .",
+    "lint": "eslint --ext .ts .",
+    "lint:fix": "eslint --ext .ts . --fix"
+  },
+  "dependencies": {
+    "deepmerge": "^4.2.2",
+    "discord.js": "^12.1.1",
+    "dotenv-safe": "^8.2.0",
+    "glob": "^7.1.6",
+    "parrot-logger": "^0.0.3",
+    "reflect-metadata": "^0.1.13",
+    "sqlite3": "^4.1.1",
+    "typeorm": "^0.2.24",
+    "utility-types": "^3.10.0",
+    "yargs-parser": "^18.1.2"
+  },
+  "devDependencies": {
+    "@inkohx/eslint-config-codestyle": "^2.1.1",
+    "@types/deepmerge": "^2.2.0",
+    "@types/glob": "^7.1.1",
+    "@types/node": "^13.9.5",
+    "@types/ws": "^7.2.3",
+    "@types/yargs-parser": "^15.0.0",
+    "@typescript-eslint/eslint-plugin": "^2.25.0",
+    "@typescript-eslint/parser": "^2.25.0",
+    "eslint": "^6.8.0",
+    "ts-node": "^8.8.1",
+    "typescript": "^3.8.3"
+  },
+  "optionalDependencies": {
+    "bufferutil": "^4.0.1",
+    "libsodium-wrappers": "^0.7.6",
+    "utf-8-validate": "^5.0.2",
+    "zlib-sync": "^0.1.6"
+  },
+  "engines": {
+    "node": ">=12.0.0"
+  }
+}
