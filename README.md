@@ -1,15 +1,32 @@
-<img src="https://i.imgur.com/czROpZP.png" align="right" width="128px" height="128px"/>
+# Hypie x Express
 
-# Hypie
+**Create API using routing controllers.**
 
-**Hypie is a template that makes it easy to develop Discord bots.**
+## Example of usage
 
-## Features
+```ts
+import { Get, JsonController, Param } from 'routing-controllers'
+import { Service } from 'typedi'
 
-- Support for multiple databases using TypeORM
-  - Migrations
-  - Active Record
-- Multi-language support
+import { Client } from '../Client'
+
+@Service()
+@JsonController()
+export class UserController {
+  public readonly client: Client
+
+  public constructor (client: Client) {
+    this.client = client
+  }
+
+  @Get('/user/:id')
+  public async getUser (@Param('id') id: string): Promise<object> {
+    const user = await this.client.users.fetch(id)
+
+    return user.toJSON()
+  }
+}
+```
 
 ## Requirement
 
