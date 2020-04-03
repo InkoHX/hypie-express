@@ -1,9 +1,12 @@
 import { Client as DjsClient, ClientOptions } from 'discord.js'
+import express, { Express } from 'express'
 import { Logger } from 'parrot-logger'
 import path from 'path'
+import { useContainer, useExpressServer } from 'routing-controllers'
+import Container, { Service } from 'typedi'
 import { Connection, createConnection, getConnectionOptions } from 'typeorm'
 
-import { CommandRegistry, EventRegistry, LanguageRegistry, InhibitorRegistry } from './registries'
+import { CommandRegistry, EventRegistry, InhibitorRegistry, LanguageRegistry } from './registries'
 
 declare module 'discord.js' {
   interface Client {
@@ -14,10 +17,13 @@ declare module 'discord.js' {
     readonly path: string,
     readonly prefix: string,
     readonly logger: Logger,
-    readonly defaultLanguageCode: string
+    readonly server: Express
   }
 }
 
+useContainer(Container)
+
+@Service()
 export class Client extends DjsClient {
   public readonly events: EventRegistry
 
@@ -32,6 +38,8 @@ export class Client extends DjsClient {
   public readonly prefix: string
 
   public readonly logger: Logger
+
+  public readonly server: Express
 
   public constructor (options?: ClientOptions) {
     super(options)
@@ -50,6 +58,8 @@ export class Client extends DjsClient {
       }
     })
 
+    this.server = express()
+
     this.path = require.main?.filename
       ? path.dirname(require.main.filename)
       : process.cwd()
@@ -58,6 +68,13 @@ export class Client extends DjsClient {
   }
 
   public async login (token?: string): Promise<string> {
+    useExpressServer(this.server, {
+      routePrefix: '/api',
+      controllers: [
+        path.join(__dirname, 'controllers', '*.{js,ts}')
+      ]
+    })
+
     await Promise.all([
       this.connectDatabase(),
       this.events.registerAll(),
@@ -66,6 +83,8 @@ export class Client extends DjsClient {
       this.inhibitors.registerAll()
     ])
       .catch(error => this.logger.error(error))
+
+    this.server.listen(process.env.PORT ?? 3000)
 
     return super.login(token)
   }
