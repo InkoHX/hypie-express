@@ -23,10 +23,10 @@
   resolved "https://registry.yarnpkg.com/@discordjs/collection/-/collection-0.1.5.tgz#1781c620b4c88d619bd0373a1548e5a6025e3d3a"
   integrity sha512-CU1q0UXQUpFNzNB7gufgoisDHP7n+T3tkqTsp3MNUkVJ5+hS3BCvME8uCXAUFlz+6T2FbTCu75A+yQ7HMKqRKw==
 
-"@inkohx/eslint-config-codestyle@^2.1.1":
-  version "2.1.1"
-  resolved "https://registry.yarnpkg.com/@inkohx/eslint-config-codestyle/-/eslint-config-codestyle-2.1.1.tgz#33ceb5d912b852bd0cc889ec243230c4891ec7e5"
-  integrity sha512-HMwzQYGFZTwNo69PYrmIhIKyn2V3spf6Y+DhG+RQg35w6OaY2fGdqM0oWuhZHFhgA16IDkifbJyeORn51rBaNQ==
+"@inkohx/eslint-config-codestyle@^2.1.2":
+  version "2.1.2"
+  resolved "https://registry.yarnpkg.com/@inkohx/eslint-config-codestyle/-/eslint-config-codestyle-2.1.2.tgz#5581415067139646d8017f4e218c40c057683ff2"
+  integrity sha512-ZWZF+3gdsW0Jo7UnZ6jxa/YdWT9TitoboFNIGwOan6ND+1MtXQ8o6OJ5YWniAF2yYfJaXnbBpHq8TWrbbj5UmQ==
 
 "@types/body-parser@*", "@types/body-parser@^1.19.0":
   version "1.19.0"
