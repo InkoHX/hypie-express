@@ -26,7 +26,7 @@
     "routing-controllers": "^0.8.1",
     "sqlite3": "^4.2.0",
     "typedi": "^0.8.0",
-    "typeorm": "^0.2.24",
+    "typeorm": "^0.2.32",
     "utility-types": "^3.10.0",
     "yargs-parser": "^18.1.3"
   },
